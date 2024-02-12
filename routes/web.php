@@ -21,5 +21,13 @@ Route::get('/dashboard', function () {
     return view('dashboard.home');
 });
 
-Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'index']);
-Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index']);
+Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'index'])->name('category.index');
+Route::get('/categories/add', [App\Http\Controllers\CategoriesController::class, 'create'])->name('category.add');
+Route::post('/categories/store', [App\Http\Controllers\CategoriesController::class, 'store'])->name('category.store');
+
+Route::get('/categories/{category}/edit', [App\Http\Controllers\CategoriesController::class, 'edit'])->name('category.edit');
+Route::put('/categories/{category}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('category.save');
+
+Route::delete('/categories/{category}/delete', [App\Http\Controllers\CategoriesController::class, 'destroy'])->name('category.delete');
+
+Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index'])->name('product.index');
