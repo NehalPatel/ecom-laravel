@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard.home');
-});
+    return view('dashboard');
+})->name('dashboard');
 
 Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'index'])->name('category.index');
 Route::get('/categories/add', [App\Http\Controllers\CategoriesController::class, 'create'])->name('category.add');
